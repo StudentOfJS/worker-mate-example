@@ -24,7 +24,11 @@ export const Test: React.FC = () => {
     fnWorker(fibonacci, 2000).then((d) => {
       setHard(performance.now() - start);
     });
-    fetchWorker({
+    fetchWorker<{
+      name: string;
+      model: string;
+      manufacturer: string;
+    }>({
       url: 'https://swapi.dev/api/starships/2',
       options: void 0,
       requestMiddleware: void 0,
@@ -34,23 +38,13 @@ export const Test: React.FC = () => {
         delay: 1000,
       },
     })
-      .then(
-        ({
-          name,
-          model,
-          manufacturer,
-        }: {
-          name: string;
-          model: string;
-          manufacturer: string;
-        }) => {
-          setStar({
-            name: name ?? '',
-            model: model ?? '',
-            manufacturer: manufacturer ?? '',
-          });
-        }
-      )
+      .then(({ name, model, manufacturer }) => {
+        setStar({
+          name: name ?? '',
+          model: model ?? '',
+          manufacturer: manufacturer ?? '',
+        });
+      })
       .catch((err) => console.log(err));
   }, []);
   return (
