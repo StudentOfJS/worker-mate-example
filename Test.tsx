@@ -49,7 +49,10 @@ export const Test: React.FC = () => {
   }, []);
   return (
     <div>
-      <h1>the meaning of life is {hard}</h1>
+      <h1>Find fibonacci of 2000</h1>
+      <p> in <strong>{hard}</strong> ms<br/>without blocking the main thread</p>
+
+      <h2>Fetch from star wars api in a worker with 5 retry attempts</h2>
       <ul>
         <li>{star.name}</li>
         <li>{star.model}</li>
